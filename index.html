@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Nasir Islam Sujan">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/ace/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ext-language_tools.js"></script>
+</head>
+
+<body onload="ready()">
+    <div id="container">
+        <div id="editor">
+        </div>
+
+        <iframe id="iframe" src="" frameborder="0">
+
+        </iframe>
+    </div>
+
+    <script>
+        function update() {
+            var idoc = document.getElementById('iframe').contentWindow.document;
+
+            idoc.open();
+            idoc.write(editor.getValue());
+            idoc.close();
+        }
+
+        function setupEditor() {
+            window.editor = ace.edit("editor");
+            editor.setTheme("ace/theme/clouds_midnight"); // clouds_midnight, monokio_industrial
+            editor.getSession().setMode("ace/mode/html");
+            editor.setValue(`<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+</body>
+</html>`, 1); //1 = moves cursor to end
+
+            editor.getSession().on('change', function () {
+                update();
+            });
+
+            editor.focus();
+            editor.setOptions({
+                fontFamily: "consolas",
+                fontSize: "12pt",
+                showLineNumbers: true,
+                showGutter: true,
+                vScrollBarAlwaysVisible: true,
+                enableBasicAutocompletion: true, enableLiveAutocompletion: true,
+
+            });
+
+            editor.setShowPrintMargin(false);
+            editor.setBehavioursEnabled(false);
+        }
+
+        function ready() {
+            setupEditor();
+            update();
+        }
+    </script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/ace/ext-emmet.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/ace/emmet.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.ui.position.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/contextMenu.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jqconsole.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/cloudEdit.min.js" type="text/javascript" charset="utf-8"></script> -->
+</body>
+
+</html>
