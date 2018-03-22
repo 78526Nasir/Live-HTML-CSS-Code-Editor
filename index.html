@@ -35,7 +35,7 @@
 
         function setupEditor() {
             window.editor = ace.edit("editor");
-            editor.setTheme("ace/theme/clouds_midnight"); // clouds_midnight, monokio_industrial
+            editor.setTheme("ace/theme/clouds_midnight");
             editor.getSession().setMode("ace/mode/html");
             editor.setValue(`<!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
 <body>
 
 </body>
-</html>`, 1); //1 = moves cursor to end
+</html>`, 1); 
 
             editor.getSession().on('change', function () {
                 update();
@@ -71,14 +71,6 @@
         }
     </script>
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/ace/ext-emmet.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/ace/emmet.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/jquery.ui.position.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/contextMenu.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/jqconsole.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/cloudEdit.min.js" type="text/javascript" charset="utf-8"></script> -->
 </body>
 
 </html>
